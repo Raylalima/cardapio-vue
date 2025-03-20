@@ -216,16 +216,65 @@
                         <div class="col">
                             <div class="card">
 
-                            </div>
+                                <div class="card-header">
+                                    Informe os seus Dados
+                                </div> <!-- fim titulo -->
+
+                                <div class="card-body">
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Seu Nome
+                                        </label>
+
+                                        <input type="text" class="form-control" v-model="inputNome">
+
+                                    </div>
+
+                                    <div class="mb-3">
+                                       <label class="form-label">
+                                            Mesa
+                                        </label>
+
+                                        <input type="text" class="form-control" v-model="inputMesa">
+                                        
+                                    </div>
+
+                                </div> <!-- fim body -->
+                                
+
+                                    
+
+
+                            </div> <!-- Fim Card -->
                         </div>
                     </div>
-                </div>
+
+                    <div class="row mt-2">
+
+                        <div class="col d-flex justify-content-between">
+                            
+                            <button type="button" class="btn btn-warning" @click="etapa -= 1"> 
+                                Editar o Lanche
+                            </button>
+
+                            <button type="button" class="btn btn-success" @click="confirmarPedido()"> 
+                                Confirmar
+                            </button>
+                            
+                        </div>
+
+                    </div>
+
+
+                </div> <!-- Fim Etapa 2 -->
+
+
 
 
             </div> <!-- Fim ROW -->
         </div><!--  Fim APP -->
-
-    </div>
+    </div> <!-- FIM container -->
 
 
     <!-- instancia VUE -->
@@ -234,11 +283,15 @@
             el: '#app',
 
             data: { // atributos // propriedades
+                etapa: 1,
                 inputTipoPao: '', /* radio = Obrigatorio */
                 inputSalada: [], /* checkbox = opcional */
                 inputMolhos: [],
                 inputBurger: '',
-                etapa: 1,
+                
+                inputNome: '',
+                inputMesa: '',
+                
 
             },
 
@@ -323,6 +376,14 @@
                     }
                 },
 
+                confirmarPedido() {
+                    if(this.inputNome && this.inputMesa) {
+                        this.etapa = 3
+                    }
+                    else {
+                        alert('Você precisa informar o seu Nome e a Mesa.')
+                    }
+                },
 
             },
 
