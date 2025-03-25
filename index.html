@@ -299,7 +299,7 @@
 
                             <!-- Botao 1 Repetir o Pedido -->
                             <button class="btn btn-primary" type="button" @click="etapa = 1">
-                                Repetir o Pedido
+                                Repetir Pedido
                             </button>
 
                             <!-- Botao 2 Novo Pedido -->
@@ -336,6 +336,7 @@
                 
                 inputNome: '',
                 inputMesa: '',
+                novoPedidoAssincrono: null
                 
 
             },
@@ -441,11 +442,16 @@
                     this.inputNome = ''
                     this.inputMesa = ''
                 },
-                
+
             },
-
+            watch: {
+                etapa(novoValor) {
+                    if (novoValor == 1) {
+                        clearTimeout(this.novoPedidoAssincrono)
+                    }
+                }
+            },
         })
-
     </script>
 
 
